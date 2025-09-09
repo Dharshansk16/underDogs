@@ -44,7 +44,7 @@ export default function Home() {
 
   // Auto-scroll to bottom of chat
   useEffect(() => {
-    const chatContainer = document.getElementById('chat-container');
+    const chatContainer = document.getElementById("chat-container");
     if (chatContainer) {
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
@@ -85,7 +85,10 @@ export default function Home() {
         } else {
           setChat((prev) => [
             ...prev,
-            { sender: "System", message: data.error || "Something went wrong." },
+            {
+              sender: "System",
+              message: data.error || "Something went wrong.",
+            },
           ]);
         }
       }, 1000);
@@ -118,7 +121,8 @@ export default function Home() {
             TimeTalks
           </h1>
           <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Step into history and engage in meaningful conversations with the greatest minds of all time
+            Step into history and engage in meaningful conversations with the
+            greatest minds of all time
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mt-6 rounded-full"></div>
         </div>
@@ -135,29 +139,35 @@ export default function Home() {
                 <div
                   key={fig.id}
                   className={`group cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                    isSelected ? 'scale-105' : ''
+                    isSelected ? "scale-105" : ""
                   }`}
                   onClick={() => {
                     setSelected(idx);
                     setChat([]);
                   }}
                 >
-                  <div className={`relative bg-gradient-to-br ${fig.bgColor} p-1 rounded-2xl shadow-2xl ${
-                    isSelected 
-                      ? 'ring-4 ring-white/50 shadow-3xl' 
-                      : 'hover:shadow-3xl'
-                  }`}>
+                  <div
+                    className={`relative bg-gradient-to-br ${
+                      fig.bgColor
+                    } p-1 rounded-2xl shadow-2xl ${
+                      isSelected
+                        ? "ring-4 ring-white/50 shadow-3xl"
+                        : "hover:shadow-3xl"
+                    }`}
+                  >
                     <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-6 h-full">
                       {/* Avatar with glow effect */}
                       <div className="relative mb-4">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${fig.bgColor} rounded-full blur-md opacity-50 animate-pulse`}></div>
+                        <div
+                          className={`absolute inset-0 bg-gradient-to-br ${fig.bgColor} rounded-full blur-md opacity-50 animate-pulse`}
+                        ></div>
                         <img
                           src={fig.avatar}
                           alt={fig.name}
                           className="relative w-24 h-24 object-cover rounded-full mx-auto border-4 border-white/20 shadow-xl"
                         />
                       </div>
-                      
+
                       {/* Content */}
                       <div className="text-center">
                         <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors">
@@ -169,11 +179,13 @@ export default function Home() {
                         <p className="text-slate-400 text-sm mb-3">
                           {fig.description}
                         </p>
-                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${fig.bgColor} text-white shadow-lg`}>
+                        <span
+                          className={`inline-block px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${fig.bgColor} text-white shadow-lg`}
+                        >
                           {fig.field}
                         </span>
                       </div>
-                      
+
                       {/* Selection indicator */}
                       {isSelected && (
                         <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
@@ -189,7 +201,9 @@ export default function Home() {
         {/* Chat Section */}
         {selected !== null && (
           <div className="max-w-4xl mx-auto">
-            <div className={`bg-gradient-to-br ${historicalFigures[selected].bgColor} p-1 rounded-2xl shadow-2xl`}>
+            <div
+              className={`bg-gradient-to-br ${historicalFigures[selected].bgColor} p-1 rounded-2xl shadow-2xl`}
+            >
               <div className="bg-slate-900/95 backdrop-blur-sm rounded-xl p-6">
                 {/* Chat Header */}
                 <div className="flex items-center gap-4 mb-6 pb-4 border-b border-slate-700">
@@ -203,32 +217,47 @@ export default function Home() {
                       {historicalFigures[selected].name}
                     </h3>
                     <p className="text-slate-400 text-sm">
-                      {historicalFigures[selected].field} • {historicalFigures[selected].period}
+                      {historicalFigures[selected].field} •{" "}
+                      {historicalFigures[selected].period}
                     </p>
                   </div>
                   <div className="ml-auto flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 text-sm font-medium">Online</span>
+                    <span className="text-green-400 text-sm font-medium">
+                      Online
+                    </span>
                   </div>
                 </div>
 
                 {/* Chat Messages */}
-                <div 
+                <div
                   id="chat-container"
                   className="h-96 overflow-y-auto mb-6 space-y-4 pr-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800"
                 >
                   {chat.length === 0 ? (
                     <div className="flex flex-col items-center justify-center h-full text-center">
                       <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full flex items-center justify-center mb-4">
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        <svg
+                          className="w-8 h-8 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                          />
                         </svg>
                       </div>
                       <p className="text-slate-300 text-lg mb-2">
                         Welcome! I'm {historicalFigures[selected].name}
                       </p>
                       <p className="text-slate-400 max-w-md">
-                        Ask me anything about my life, work, or the era I lived in. I'm here to share my knowledge and experiences with you.
+                        Ask me anything about my life, work, or the era I lived
+                        in. I'm here to share my knowledge and experiences with
+                        you.
                       </p>
                     </div>
                   ) : (
@@ -236,7 +265,11 @@ export default function Home() {
                       {chat.map((msg, i) => (
                         <div
                           key={i}
-                          className={`flex ${msg.sender === "You" ? "justify-end" : "justify-start"} animate-slideIn`}
+                          className={`flex ${
+                            msg.sender === "You"
+                              ? "justify-end"
+                              : "justify-start"
+                          } animate-slideIn`}
                         >
                           <div
                             className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl shadow-lg ${
@@ -258,7 +291,9 @@ export default function Home() {
                       ))}
                       {isTyping && (
                         <div className="flex justify-start animate-slideIn">
-                          <div className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl bg-gradient-to-br ${historicalFigures[selected].bgColor} text-white shadow-lg`}>
+                          <div
+                            className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl bg-gradient-to-br ${historicalFigures[selected].bgColor} text-white shadow-lg`}
+                          >
                             <div className="text-xs opacity-75 mb-1">
                               {historicalFigures[selected].name}
                             </div>
@@ -299,8 +334,18 @@ export default function Home() {
                     {loading ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                     ) : (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                        />
                       </svg>
                     )}
                   </button>
